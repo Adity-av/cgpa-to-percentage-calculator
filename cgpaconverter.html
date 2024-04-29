@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CGPA to Percentage Converter</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+        }
+        .container {
+            max-width: 400px;
+            margin: auto;
+        }
+        input[type="text"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            box-sizing: border-box;
+        }
+        input[type="submit"] {
+            width: 100%;
+            padding: 10px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        input[type="submit"]:hover {
+            background-color: #45a049;
+        }
+        #result {
+            margin-top: 10px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>CGPA to Percentage Converter</h2>
+        <form id="cgpaForm">
+            <label for="cgpa">Enter CGPA:</label>
+            <input type="text" id="cgpa" name="cgpa" placeholder="Enter CGPA (e.g., 8.5)" required>
+            <input type="hidden" id="gradingScale" name="gradingScale" value="9.5">
+            <input type="submit" value="Convert to Percentage">
+        </form>
+        <div id="result"></div>
+    </div>
+
+    <script>
+        document.getElementById('cgpaForm').addEventListener('submit', function(event) {
+            event.preventDefault(); // Prevent the form from submitting
+
+            // Get CGPA and grading scale value
+            const cgpa = parseFloat(document.getElementById('cgpa').value);
+            const multiplier = parseFloat(document.getElementById('gradingScale').value);
+
+            // Calculate percentage
+            const percentage = cgpa * multiplier;
+
+            // Display result
+            document.getElementById('result').textContent = `Equivalent Percentage: ${percentage.toFixed(2)}%`;
+        });
+    </script>
+</body>
+</html>
